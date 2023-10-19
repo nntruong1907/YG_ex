@@ -555,12 +555,8 @@ def load_data(path_data, test_size):
     np.random.seed(seed)
     tf.random.set_seed(seed)
 
-    # train_path = f"{path_data}/train_data_yg6.csv"
-    # test_path = f"{path_data}/test_data_yg6.csv"
-    # train_path = f"{path_data}/train_data_yg20.csv"
-    # test_path = f"{path_data}/test_data_yg20.csv"
-    train_path = f"{path_data}/train_data_yg82.csv"
-    test_path = f"{path_data}/test_data_yg82.csv"
+    train_path = f"{path_data}/train_data.csv"
+    test_path = f"{path_data}/test_data.csv"
 
     X, y, class_names = load_csv(train_path)
     X_train, X_val, y_train, y_val = train_test_split(
@@ -591,12 +587,8 @@ def load_svm_data(path_data):
     np.random.seed(seed)
     tf.random.set_seed(seed)
 
-    train_path = f"{path_data}/train_data_yg6.csv"
-    test_path = f"{path_data}/test_data_yg6.csv"
-    # train_path = f"{path_data}/train_data_yg20.csv"
-    # test_path = f"{path_data}/test_data_yg20.csv"
-    # train_path = f"{path_data}/train_data_yg82.csv"
-    # test_path = f"{path_data}/test_data_yg82.csv"
+    train_path = f"{path_data}/train_data.csv"
+    test_path = f"{path_data}/test_data.csv"
     # Load the train data
     X_train, y_train, class_names = load_csv_svm(train_path)
     X_test, y_test, _ = load_csv_svm(test_path)
@@ -643,7 +635,7 @@ def run_exp(
         name_saved = name_saved.replace("fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense")
         model = truongmodel.fcnn1d_model(
             input_shape=(34),
-            num_classes=num_classes,
+            num_classes=10,
             dropout_fc=0.2,
             num_dense_layers=num_dense_layers,  # 5
         )
@@ -783,13 +775,13 @@ def run_exp(
     # Print the classification report
     print(
         "\nClassification Report:\n",
-        classification_report(ytrue, ypred, target_names=class_names, zero_division=0),
+        classification_report(ytrue, ypred, target_names=class_names, zero_division=0, digits=5),
     )
 
     with open(f"statistics/classification_report_{name_saved}.txt", "w") as f:
         f.writelines(
             classification_report(
-                ytrue, ypred, target_names=class_names, zero_division=0
+                ytrue, ypred, target_names=class_names, zero_division=0, digits=5
             )
         )
     f.close()
@@ -907,14 +899,14 @@ def run_svm_exp(
     print(
         "\nClassification Report:\n",
         classification_report(
-            y_test, y_pred, target_names=class_names, zero_division=0
+            y_test, y_pred, target_names=class_names, zero_division=0, digits=5
         ),
     )
 
     with open(f"statistics/classification_report_{name_saved}.txt", "w") as f:
         f.writelines(
             classification_report(
-                y_test, y_pred, target_names=class_names, zero_division=0
+                y_test, y_pred, target_names=class_names, zero_division=0, digits=5
             )
         )
     f.close()
