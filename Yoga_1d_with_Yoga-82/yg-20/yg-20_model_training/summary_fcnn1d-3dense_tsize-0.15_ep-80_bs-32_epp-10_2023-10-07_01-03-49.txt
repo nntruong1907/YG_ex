@@ -1,0 +1,25 @@
+Model: "fcnn1d_3_dense"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_3 (InputLayer)        [(None, 34)]              0         
+                                                                 
+ dense_5 (Dense)             (None, 64)                2240      
+                                                                 
+ dropout_3 (Dropout)         (None, 64)                0         
+                                                                 
+ dense_6 (Dense)             (None, 128)               8320      
+                                                                 
+ dropout_4 (Dropout)         (None, 128)               0         
+                                                                 
+ dense_7 (Dense)             (None, 128)               16512     
+                                                                 
+ dropout_5 (Dropout)         (None, 128)               0         
+                                                                 
+ dense_8 (Dense)             (None, 20)                2580      
+                                                                 
+=================================================================
+Total params: 29652 (115.83 KB)
+Trainable params: 29652 (115.83 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

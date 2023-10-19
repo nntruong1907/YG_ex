@@ -1,0 +1,43 @@
+Model: "conv1d-2maxpool_2conv_per_maxpool"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_7 (InputLayer)        [(None, 34, 1)]           0         
+                                                                 
+ conv1d_17 (Conv1D)          (None, 34, 32)            128       
+                                                                 
+ dropout_29 (Dropout)        (None, 34, 32)            0         
+                                                                 
+ conv1d_18 (Conv1D)          (None, 34, 64)            6208      
+                                                                 
+ dropout_30 (Dropout)        (None, 34, 64)            0         
+                                                                 
+ max_pooling1d_7 (MaxPoolin  (None, 17, 64)            0         
+ g1D)                                                            
+                                                                 
+ conv1d_19 (Conv1D)          (None, 17, 32)            6176      
+                                                                 
+ dropout_31 (Dropout)        (None, 17, 32)            0         
+                                                                 
+ conv1d_20 (Conv1D)          (None, 17, 64)            6208      
+                                                                 
+ dropout_32 (Dropout)        (None, 17, 64)            0         
+                                                                 
+ max_pooling1d_8 (MaxPoolin  (None, 8, 64)             0         
+ g1D)                                                            
+                                                                 
+ flatten_13962 (Flatten)     (None, 512)               0         
+                                                                 
+ dropout_33 (Dropout)        (None, 512)               0         
+                                                                 
+ dense_12 (Dense)            (None, 64)                32832     
+                                                                 
+ dropout_34 (Dropout)        (None, 64)                0         
+                                                                 
+ dense_13 (Dense)            (None, 82)                5330      
+                                                                 
+=================================================================
+Total params: 56882 (222.20 KB)
+Trainable params: 56882 (222.20 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

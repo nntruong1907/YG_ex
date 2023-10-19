@@ -1,0 +1,49 @@
+Model: "conv1d-4maxpool_1conv_per_maxpool"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_16 (InputLayer)       [(None, 34, 1)]           0         
+                                                                 
+ conv1d_90 (Conv1D)          (None, 34, 32)            128       
+                                                                 
+ dropout_120 (Dropout)       (None, 34, 32)            0         
+                                                                 
+ max_pooling1d_30 (MaxPooli  (None, 17, 32)            0         
+ ng1D)                                                           
+                                                                 
+ conv1d_91 (Conv1D)          (None, 17, 32)            3104      
+                                                                 
+ dropout_121 (Dropout)       (None, 17, 32)            0         
+                                                                 
+ max_pooling1d_31 (MaxPooli  (None, 8, 32)             0         
+ ng1D)                                                           
+                                                                 
+ conv1d_92 (Conv1D)          (None, 8, 32)             3104      
+                                                                 
+ dropout_122 (Dropout)       (None, 8, 32)             0         
+                                                                 
+ max_pooling1d_32 (MaxPooli  (None, 4, 32)             0         
+ ng1D)                                                           
+                                                                 
+ conv1d_93 (Conv1D)          (None, 4, 32)             3104      
+                                                                 
+ dropout_123 (Dropout)       (None, 4, 32)             0         
+                                                                 
+ max_pooling1d_33 (MaxPooli  (None, 2, 32)             0         
+ ng1D)                                                           
+                                                                 
+ flatten_13971 (Flatten)     (None, 64)                0         
+                                                                 
+ dropout_124 (Dropout)       (None, 64)                0         
+                                                                 
+ dense_30 (Dense)            (None, 64)                4160      
+                                                                 
+ dropout_125 (Dropout)       (None, 64)                0         
+                                                                 
+ dense_31 (Dense)            (None, 20)                1300      
+                                                                 
+=================================================================
+Total params: 14900 (58.20 KB)
+Trainable params: 14900 (58.20 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

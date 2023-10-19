@@ -1,0 +1,1 @@
+"Namespace(C=100, batch_size=32, d=1, df='ovo', e_patience=10, epochs=80, gamma='scale', k_fold=5, kernel='rbf', model='fcnn1d', source='data', test_size=0.15)"

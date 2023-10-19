@@ -1,0 +1,49 @@
+Model: "fcnn1d_9_dense"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_9 (InputLayer)        [(None, 34)]              0         
+                                                                 
+ dense_44 (Dense)            (None, 64)                2240      
+                                                                 
+ dropout_36 (Dropout)        (None, 64)                0         
+                                                                 
+ dense_45 (Dense)            (None, 128)               8320      
+                                                                 
+ dropout_37 (Dropout)        (None, 128)               0         
+                                                                 
+ dense_46 (Dense)            (None, 128)               16512     
+                                                                 
+ dropout_38 (Dropout)        (None, 128)               0         
+                                                                 
+ dense_47 (Dense)            (None, 256)               33024     
+                                                                 
+ dropout_39 (Dropout)        (None, 256)               0         
+                                                                 
+ dense_48 (Dense)            (None, 265)               68105     
+                                                                 
+ dropout_40 (Dropout)        (None, 265)               0         
+                                                                 
+ dense_49 (Dense)            (None, 128)               34048     
+                                                                 
+ dropout_41 (Dropout)        (None, 128)               0         
+                                                                 
+ dense_50 (Dense)            (None, 128)               16512     
+                                                                 
+ dropout_42 (Dropout)        (None, 128)               0         
+                                                                 
+ dense_51 (Dense)            (None, 64)                8256      
+                                                                 
+ dropout_43 (Dropout)        (None, 64)                0         
+                                                                 
+ dense_52 (Dense)            (None, 64)                4160      
+                                                                 
+ dropout_44 (Dropout)        (None, 64)                0         
+                                                                 
+ dense_53 (Dense)            (None, 82)                5330      
+                                                                 
+=================================================================
+Total params: 196507 (767.61 KB)
+Trainable params: 196507 (767.61 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

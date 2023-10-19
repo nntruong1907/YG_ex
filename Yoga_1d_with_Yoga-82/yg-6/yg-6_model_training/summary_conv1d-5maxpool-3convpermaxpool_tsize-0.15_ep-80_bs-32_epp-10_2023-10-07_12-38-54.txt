@@ -1,0 +1,96 @@
+Model: "conv1d-5maxpool_3conv_per_maxpool"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_23 (InputLayer)       [(None, 34, 1)]           0         
+                                                                 
+ conv1d_165 (Conv1D)         (None, 34, 32)            128       
+                                                                 
+ dropout_209 (Dropout)       (None, 34, 32)            0         
+                                                                 
+ conv1d_166 (Conv1D)         (None, 34, 64)            6208      
+                                                                 
+ dropout_210 (Dropout)       (None, 34, 64)            0         
+                                                                 
+ conv1d_167 (Conv1D)         (None, 34, 128)           24704     
+                                                                 
+ dropout_211 (Dropout)       (None, 34, 128)           0         
+                                                                 
+ max_pooling1d_60 (MaxPooli  (None, 17, 128)           0         
+ ng1D)                                                           
+                                                                 
+ conv1d_168 (Conv1D)         (None, 17, 32)            12320     
+                                                                 
+ dropout_212 (Dropout)       (None, 17, 32)            0         
+                                                                 
+ conv1d_169 (Conv1D)         (None, 17, 64)            6208      
+                                                                 
+ dropout_213 (Dropout)       (None, 17, 64)            0         
+                                                                 
+ conv1d_170 (Conv1D)         (None, 17, 128)           24704     
+                                                                 
+ dropout_214 (Dropout)       (None, 17, 128)           0         
+                                                                 
+ max_pooling1d_61 (MaxPooli  (None, 8, 128)            0         
+ ng1D)                                                           
+                                                                 
+ conv1d_171 (Conv1D)         (None, 8, 32)             12320     
+                                                                 
+ dropout_215 (Dropout)       (None, 8, 32)             0         
+                                                                 
+ conv1d_172 (Conv1D)         (None, 8, 64)             6208      
+                                                                 
+ dropout_216 (Dropout)       (None, 8, 64)             0         
+                                                                 
+ conv1d_173 (Conv1D)         (None, 8, 128)            24704     
+                                                                 
+ dropout_217 (Dropout)       (None, 8, 128)            0         
+                                                                 
+ max_pooling1d_62 (MaxPooli  (None, 4, 128)            0         
+ ng1D)                                                           
+                                                                 
+ conv1d_174 (Conv1D)         (None, 4, 32)             12320     
+                                                                 
+ dropout_218 (Dropout)       (None, 4, 32)             0         
+                                                                 
+ conv1d_175 (Conv1D)         (None, 4, 64)             6208      
+                                                                 
+ dropout_219 (Dropout)       (None, 4, 64)             0         
+                                                                 
+ conv1d_176 (Conv1D)         (None, 4, 128)            24704     
+                                                                 
+ dropout_220 (Dropout)       (None, 4, 128)            0         
+                                                                 
+ max_pooling1d_63 (MaxPooli  (None, 2, 128)            0         
+ ng1D)                                                           
+                                                                 
+ conv1d_177 (Conv1D)         (None, 2, 32)             12320     
+                                                                 
+ dropout_221 (Dropout)       (None, 2, 32)             0         
+                                                                 
+ conv1d_178 (Conv1D)         (None, 2, 64)             6208      
+                                                                 
+ dropout_222 (Dropout)       (None, 2, 64)             0         
+                                                                 
+ conv1d_179 (Conv1D)         (None, 2, 128)            24704     
+                                                                 
+ dropout_223 (Dropout)       (None, 2, 128)            0         
+                                                                 
+ max_pooling1d_64 (MaxPooli  (None, 1, 128)            0         
+ ng1D)                                                           
+                                                                 
+ flatten_13978 (Flatten)     (None, 128)               0         
+                                                                 
+ dropout_224 (Dropout)       (None, 128)               0         
+                                                                 
+ dense_44 (Dense)            (None, 64)                8256      
+                                                                 
+ dropout_225 (Dropout)       (None, 64)                0         
+                                                                 
+ dense_45 (Dense)            (None, 6)                 390       
+                                                                 
+=================================================================
+Total params: 212614 (830.52 KB)
+Trainable params: 212614 (830.52 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
