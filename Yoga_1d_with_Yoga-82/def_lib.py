@@ -413,14 +413,14 @@ def save_evaluate(folder_saved, name_saved, model, X_train, y_train, X_test, y_t
     loss_test, accuracy_test = model.evaluate(X_test, y_test)
     data_eval = (
         "LOSS TRAIN: "
-        + str(loss_train)
+        + str(round(loss_train, 5))
         + " / ACCURACY TRAIN: "
-        + str(accuracy_train)
+        + str(round(accuracy_train, 5))
         + "\n"
         + "LOSS TEST: "
-        + str(loss_test)
+        + str(round(loss_test, 5))
         + " / ACCURACY TEST: "
-        + str(accuracy_test)
+        + str(round(accuracy_test, 5))
     )
     print(data_eval)
 
@@ -677,8 +677,6 @@ def run_exp(
         patience=e_patience,
     )
     # Lấy thông tin bộ nhớ trước khi huấn luyện bắt đầu
-    # memory_info_before = psutil.virtual_memory()
-    # memory_usage_before = memory_info_before.percent
     # Lấy ID của tiến trình hiện tại
     process_id = os.getpid()
     # Tạo một đối tượng Process để biểu diễn tiến trình hiện tại
