@@ -344,6 +344,7 @@ def save_log_txt(folder_saved, name_saved, history_callback):
     val_acc = history_callback.history["val_accuracy"]
     train_loss = history_callback.history["loss"]
     val_loss = history_callback.history["val_loss"]
+
     title_cols = np.array(
         ["epoch", "train_acc", "valid_acc", "train_loss", "valid_loss"]
     )
@@ -388,16 +389,16 @@ def save_measure(
         samples_test
     ) + "\n" "Running time: " + str(
         elapsed
-    ) + "\n" + "Memory consumed during training (%): " + str(
+    ) + "\n" + "Memory used (MB): " + str(
         consumes_memory
     ) + "\n" + "Total epochs: " + str(
         num_epoch
     ) + "\n" + "Best train accuracy: " + str(
-        best_train_accuracy
+        round(best_val_accuracy, 5)
     ) + " / epoch: " + str(
         best_train_epoch
     ) + "\n" + "Best val accuracy: " + str(
-        best_val_accuracy
+        round(best_val_accuracy, 5)
     ) + " / epoch: " + str(
         best_val_epoch
     )
@@ -632,7 +633,9 @@ def run_exp(
     # Construct model #
     ###################
     if model_name in ["fcnn1d"]:
-        name_saved = name_saved.replace("fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense")
+        name_saved = name_saved.replace(
+            "fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense"
+        )
         model = truongmodel.fcnn1d_model(
             input_shape=(34),
             num_classes=10,
@@ -674,8 +677,13 @@ def run_exp(
         patience=e_patience,
     )
     # Lấy thông tin bộ nhớ trước khi huấn luyện bắt đầu
-    memory_info_before = psutil.virtual_memory()
-    memory_usage_before = memory_info_before.percent
+    # memory_info_before = psutil.virtual_memory()
+    # memory_usage_before = memory_info_before.percent
+    # Lấy ID của tiến trình hiện tại
+    process_id = os.getpid()
+    # Tạo một đối tượng Process để biểu diễn tiến trình hiện tại
+    current_process = psutil.Process(process_id)
+
     start = datetime.datetime.now()
     history_callback = model.fit(
         processed_X_train,
@@ -686,15 +694,12 @@ def run_exp(
         validation_data=(processed_X_val, y_val),
         callbacks=[checkpoint, earlystopping],
     )
-    # Lấy thông tin bộ nhớ sau khi huấn luyện kết thúc
-    memory_info_after = psutil.virtual_memory()
-    memory_usage_after = memory_info_after.percent
+    # Lấy thông tin về việc sử dụng bộ nhớ của tiến trình
+    memory_info = current_process.memory_info()
+    rss = memory_info.rss  # bytes
+    consumes_memory = round(rss / (1024**2), 5)  # Megabytes (MB)
     elapsed = datetime.datetime.now() - start
-    consumes_memory = memory_usage_after - memory_usage_before
-    # memory_usage = round(consumes_memory, 5)
-    print(f"Memory used before training: {memory_usage_before}%")
-    print(f"Memory used after training: {memory_usage_after}%")
-    print(f"Memory used: {consumes_memory} %")
+    print(f"Memory used: {consumes_memory} MB")
     print("=" * 100)
 
     ####################
@@ -775,7 +780,9 @@ def run_exp(
     # Print the classification report
     print(
         "\nClassification Report:\n",
-        classification_report(ytrue, ypred, target_names=class_names, zero_division=0, digits=5),
+        classification_report(
+            ytrue, ypred, target_names=class_names, zero_division=0, digits=5
+        ),
     )
 
     with open(f"statistics/classification_report_{name_saved}.txt", "w") as f:
