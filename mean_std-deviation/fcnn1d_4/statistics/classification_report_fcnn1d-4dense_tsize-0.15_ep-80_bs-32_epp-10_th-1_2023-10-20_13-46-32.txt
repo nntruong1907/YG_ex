@@ -1,0 +1,16 @@
+                          precision    recall  f1-score   support
+
+              Chair_Pose    0.98305   0.95082   0.96667        61
+              Cobra_Pose    0.98795   0.97619   0.98204        84
+      Dolphin_Plank_Pose    0.95238   1.00000   0.97561        40
+Downward-Facing_Dog_Pose    1.00000   0.98750   0.99371        80
+              Plank_Pose    0.96923   1.00000   0.98437        63
+         Side_Plank_Pose    0.98113   0.94545   0.96296        55
+               Tree_Pose    0.94000   0.98947   0.96410        95
+        Warrior_III_Pose    0.94444   0.98077   0.96226        52
+         Warrior_II_Pose    0.98969   0.98969   0.98969        97
+          Warrior_I_Pose    1.00000   0.92857   0.96296        70
+
+                accuracy                        0.97561       697
+               macro avg    0.97479   0.97485   0.97444       697
+            weighted avg    0.97630   0.97561   0.97560       697
