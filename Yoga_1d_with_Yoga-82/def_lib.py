@@ -638,7 +638,7 @@ def run_exp(
         )
         model = truongmodel.fcnn1d_model(
             input_shape=(34),
-            num_classes=10,
+            num_classes=num_classes,
             dropout_fc=0.2,
             num_dense_layers=num_dense_layers,  # 5
         )

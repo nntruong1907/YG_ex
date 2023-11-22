@@ -1,0 +1,26 @@
+                           precision    recall  f1-score   support
+
+        Standing_Straight    0.91971   0.98438   0.95094       128
+    Standing_Forward_bend    0.90909   0.98266   0.94444       173
+       Standing_Side_bend    0.94675   0.97264   0.95952       329
+          Standing_Others    0.94805   0.87952   0.91250       166
+          Sitting_Normal1    0.86250   0.93878   0.89902       147
+          Sitting_Normal2    0.90798   0.94268   0.92500       157
+            Sitting_Split    0.90769   0.85507   0.88060        69
+     Sitting_Forward_bend    0.88679   0.89524   0.89100       105
+            Sitting_Twist    0.90476   0.83824   0.87023        68
+          Balancing_Front    0.92683   0.89764   0.91200       127
+           Balancing_Side    0.88235   0.80357   0.84112        56
+Inverted_Legs_straight_up    0.92614   0.94767   0.93678       172
+       Inverted_Legs_bend    0.96970   0.86486   0.91429        74
+      Reclining_Up-facing    0.96789   0.89787   0.93157       235
+    Reclining_Down-facing    0.95516   0.93833   0.94667       227
+    Reclining_Side_facing    0.83929   0.85455   0.84685        55
+  Reclining_Plank_balance    0.90000   0.93506   0.91720        77
+          Wheel_Up-facing    0.95872   0.95434   0.95652       219
+        Wheel_Down-facing    1.00000   1.00000   1.00000        69
+             Wheel_Others    0.92941   0.92941   0.92941        85
+
+                 accuracy                        0.92915      2738
+                macro avg    0.92244   0.91562   0.91828      2738
+             weighted avg    0.92999   0.92915   0.92890      2738

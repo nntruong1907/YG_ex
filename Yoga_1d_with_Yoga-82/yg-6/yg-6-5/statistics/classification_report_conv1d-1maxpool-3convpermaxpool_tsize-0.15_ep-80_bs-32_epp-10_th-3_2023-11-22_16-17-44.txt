@@ -1,0 +1,12 @@
+              precision    recall  f1-score   support
+
+    Standing    0.96625   0.97111   0.96867       796
+     Sitting    0.92105   0.96154   0.94086       546
+   Balancing    0.91908   0.86885   0.89326       183
+    Inverted    0.97925   0.95935   0.96920       246
+   Reclining    0.95197   0.93434   0.94308       594
+       Wheel    0.95687   0.95174   0.95430       373
+
+    accuracy                        0.95069      2738
+   macro avg    0.94908   0.94116   0.94489      2738
+weighted avg    0.95088   0.95069   0.95062      2738
