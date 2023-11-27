@@ -1,0 +1,10 @@
+numpy
+pandas
+tqdm
+wget
+tensorflow
+matplotlib
+opencv-python
+scikit-learn
+argparse
+psutil
