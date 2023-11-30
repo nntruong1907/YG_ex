@@ -10,7 +10,7 @@ from keras.layers import (
 )
 
 
-def fcnn2d_model(
+def fnn2d_model(
     input_shape,
     num_classes=10,
     num_dense_layers=5,
@@ -20,7 +20,7 @@ def fcnn2d_model(
     loss_func="categorical_crossentropy",
 ):
     """
-    Tạo mô hình Fully Connected Neural Network (FCNN)2D tùy chỉnh.
+    Tạo mô hình Fully Connected Neural Network (fnn)2D tùy chỉnh.
     """
 
     num_units_list = [64, 128, 128, 256, 265, 128, 128, 64]
@@ -44,7 +44,7 @@ def fcnn2d_model(
 
     # Tạo mô hình từ các lớp đã định nghĩa
     model = Model(
-        inputs=input_layer, outputs=output_layer, name=f"fcnn2d_{num_dense_layers}_dense"
+        inputs=input_layer, outputs=output_layer, name=f"fnn2d_{num_dense_layers}_dense"
     )
 
     if optimizers_func == "adam":

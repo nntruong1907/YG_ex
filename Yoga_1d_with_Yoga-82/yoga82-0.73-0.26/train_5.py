@@ -1,11 +1,11 @@
 """
 Default command line parameter:
-    python train_ex.py --model fcnn1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model fnn1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
 
 Other:
-    python train_ex.py --model conv1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
-    python train_ex.py --model svm --source data --C 100 --kernel rbf --gamma scale --df ovo --k_fold 5
-    python train_ex.py --model svm --source data --C 100 --kernel rbf --gamma scale --d 1 --df ovo --k_fold 5
+    python train.py --model conv1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model svm --source data --C 100 --kernel rbf --gamma scale --df ovo --k_fold 5
+    python train.py --model svm --source data --C 100 --kernel rbf --gamma scale --d 1 --df ovo --k_fold 5
 
 """
 
@@ -22,8 +22,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        default="svm",
-        help="model name: svm / fcnn1d / conv1d",
+        # default="conv1d",
+        default="fnn1d",
+        help="model name: svm / fnn1d / conv1d",
     )
     parser.add_argument(
         "--source",
@@ -99,11 +100,10 @@ if __name__ == "__main__":
     for d in list_dir:
         if not os.path.exists(d):
             os.makedirs(d)
-
     ###################
     # Model training  #
     ###################
-
+    n = 5
     if args.model not in ["svm"]:
         (
             processed_X_train,
@@ -114,13 +114,14 @@ if __name__ == "__main__":
             y_test,
             class_names,
         ) = load_data(args.source, args.test_size)
-        if args.model in ["fcnn1d"]:
-            max_dense_layers = 10
-            for num_dense in range(1, max_dense_layers + 1):
-                print("=" * 150)
-                print(f"{num_dense} dense layer")
+
+        if args.model in ["fnn1d"]:
+            num_dense = 4
+            for i in range(n):
+                print(f"Lần lặp thứ {i+1}")
                 now = datetime.datetime.now()
                 timestring = now.strftime("%Y-%m-%d_%H-%M-%S")  # https://strftime.org/
+                timestring = f'th-{i+1}_{timestring}'
                 name_saved = (
                     str(args.model)
                     + "_tsize-"
@@ -149,55 +150,43 @@ if __name__ == "__main__":
                     e_patience=args.e_patience,
                     num_dense_layers=num_dense,
                 )
-
         elif args.model in ["conv1d"]:
-            max_num_maxpools = 5
-            max_num_conv_layers_per_maxpool = 5
-            # Iterate through the number of max-pooling layers
-            for num_maxpools in range(1, max_num_maxpools + 1):
-                # Iterate through the number of Conv1D layers per max-pooling layer
-                for num_conv_layers_per_maxpool in range(
-                    1, max_num_conv_layers_per_maxpool + 1
-                ):
-                    print("=" * 150)
-                    print(
-                        f"{num_maxpools} maxpool, {num_conv_layers_per_maxpool} conv per maxpool"
-                    )
-                    now = datetime.datetime.now()
-                    timestring = now.strftime(
-                        "%Y-%m-%d_%H-%M-%S"
-                    )  # https://strftime.org/
-                    name_saved = (
-                        str(args.model)
-                        + "_tsize-"
-                        + str(args.test_size)
-                        + "_ep-"
-                        + str(args.epochs)
-                        + "_bs-"
-                        + str(args.batch_size)
-                        + "_epp-"
-                        + str(args.e_patience)
-                        + "_"
-                        + str(timestring)
-                    )
-
-                    run_exp(
-                        name_saved=name_saved,
-                        model_name=args.model,
-                        processed_X_train=processed_X_train,
-                        y_train=y_train,
-                        processed_X_val=processed_X_val,
-                        y_val=y_val,
-                        processed_X_test=processed_X_test,
-                        y_test=y_test,
-                        class_names=class_names,
-                        epochs=args.epochs,
-                        batch_size=args.batch_size,
-                        e_patience=args.e_patience,
-                        num_conv_layers_per_maxpool=num_conv_layers_per_maxpool,
-                        num_maxpools=num_maxpools,
-                    )
-
+            num_maxpools = 1
+            num_conv_layers_per_maxpool = 3
+            for i in range(n):
+                print(f"Lần lặp thứ {i+1}")
+                now = datetime.datetime.now()
+                timestring = now.strftime("%Y-%m-%d_%H-%M-%S")  # https://strftime.org/
+                timestring = f'th-{i+1}_{timestring}'
+                name_saved = (
+                    str(args.model)
+                    + "_tsize-"
+                    + str(args.test_size)
+                    + "_ep-"
+                    + str(args.epochs)
+                    + "_bs-"
+                    + str(args.batch_size)
+                    + "_epp-"
+                    + str(args.e_patience)
+                    + "_"
+                    + str(timestring)
+                )
+                run_exp(
+                    name_saved=name_saved,
+                    model_name=args.model,
+                    processed_X_train=processed_X_train,
+                    y_train=y_train,
+                    processed_X_val=processed_X_val,
+                    y_val=y_val,
+                    processed_X_test=processed_X_test,
+                    y_test=y_test,
+                    class_names=class_names,
+                    epochs=args.epochs,
+                    batch_size=args.batch_size,
+                    e_patience=args.e_patience,
+                    num_conv_layers_per_maxpool=num_conv_layers_per_maxpool,
+                    num_maxpools=num_maxpools,
+                )
     else:
         (
             processed_X_train,
@@ -206,40 +195,43 @@ if __name__ == "__main__":
             y_test,
             class_names,
         ) = load_svm_data(args.source)
-        now = datetime.datetime.now()
-        timestring = now.strftime("%Y-%m-%d_%H-%M-%S")
-        name_saved = (
-            str(args.model)
-            + "_C-"
-            + str(args.C)
-            + "_kernel-"
-            + str(args.kernel)
-            + "_gamma-"
-            + str(args.gamma)
-            + "_d-"
-            + str(args.d)
-            + "_df-"
-            + str(args.df)
-            + "_fold-"
-            + str(args.k_fold)
-            + "_"
-            + str(timestring)
-        )
+        for i in range(n):
+            print(f"Lần lặp thứ {i+1}")
+            now = datetime.datetime.now()
+            timestring = now.strftime("%Y-%m-%d_%H-%M-%S")  # https://strftime.org/
+            timestring = f'th-{i+1}_{timestring}'
 
-        run_svm_exp(
-            name_saved=name_saved,
-            processed_X_train=processed_X_train,
-            y_train=y_train,
-            processed_X_test=processed_X_test,
-            y_test=y_test,
-            class_names=class_names,
-            C=args.C,
-            kernel=args.kernel,
-            gamma=args.gamma,
-            d=args.d,
-            df=args.df,
-            k_fold=args.k_fold,
-        )
+            name_saved = (
+                str(args.model)
+                + "_C-"
+                + str(args.C)
+                + "_kernel-"
+                + str(args.kernel)
+                + "_gamma-"
+                + str(args.gamma)
+                + "_d-"
+                + str(args.d)
+                + "_df-"
+                + str(args.df)
+                + "_fold-"
+                + str(args.k_fold)
+                + "_"
+                + str(timestring)
+            )
+            run_svm_exp(
+                name_saved=name_saved,
+                processed_X_train=processed_X_train,
+                y_train=y_train,
+                processed_X_test=processed_X_test,
+                y_test=y_test,
+                class_names=class_names,
+                C=args.C,
+                kernel=args.kernel,
+                gamma=args.gamma,
+                d=args.d,
+                df=args.df,
+                k_fold=args.k_fold,
+            )
 
     # Luu lai cac thong so nhap tu ban phim de chay thuc nghiem
     with open(f"log/{name_saved}_config.json", "w") as fp:

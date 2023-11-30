@@ -466,9 +466,9 @@ def run_exp(
     ###################
     # Construct model #
     ###################
-    if model_name in ["fcnn2d"]:
-        name_saved = name_saved.replace("fcnn2d", "fcnn2d" + f"-{num_dense_layers}dense")
-        model = truongmodel_2d.fcnn2d_model(
+    if model_name in ["fnn2d"]:
+        name_saved = name_saved.replace("fnn2d", "fnn2d" + f"-{num_dense_layers}dense")
+        model = truongmodel_2d.fnn2d_model(
             input_shape=(img_size, img_size, 3),
             num_classes=num_classes,
             dropout_fc=0.2,

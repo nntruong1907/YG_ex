@@ -51,7 +51,7 @@ def svm_model(
     return model
 
 
-def fcnn1d_model(
+def fnn1d_model(
     input_shape,
     num_classes=10,
     num_dense_layers=5,
@@ -61,7 +61,7 @@ def fcnn1d_model(
     loss_func="categorical_crossentropy",
 ):
     """
-    Tạo mô hình Fully Connected Neural Network (FCNN)1D tùy chỉnh.
+    Tạo mô hình Feedforward Neural Network (FCNN)1D tùy chỉnh.
 
     Parameters:
         input_shape (tuple): Kích thước đầu vào (input shape) của mô hình, ví dụ: (34,).
@@ -98,7 +98,7 @@ def fcnn1d_model(
 
     # Tạo mô hình từ các lớp đã định nghĩa
     model = Model(
-        inputs=input_layer, outputs=output_layer, name=f"fcnn1d_{num_dense_layers}_dense"
+        inputs=input_layer, outputs=output_layer, name=f"fnn1d_{num_dense_layers}_dense"
     )
 
     if optimizers_func == "adam":

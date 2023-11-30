@@ -626,11 +626,11 @@ def run_exp(
     ###################
     # Construct model #
     ###################
-    if model_name in ["fcnn1d"]:
+    if model_name in ["fnn1d"]:
         name_saved = name_saved.replace(
-            "fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense"
+            "fnn1d", "fnn1d" + f"-{num_dense_layers}dense"
         )
-        model = truongmodel.fcnn1d_model(
+        model = truongmodel.fnn1d_model(
             input_shape=(34),
             num_classes=num_classes,
             dropout_fc=0.2,

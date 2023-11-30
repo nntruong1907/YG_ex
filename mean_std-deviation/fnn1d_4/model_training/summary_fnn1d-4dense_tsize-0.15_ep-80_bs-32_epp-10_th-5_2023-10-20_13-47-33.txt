@@ -1,26 +1,26 @@
-Model: "fcnn1d_4_dense"
+Model: "fnn1d_4_dense"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_2 (InputLayer)        [(None, 34)]              0         
+ input_5 (InputLayer)        [(None, 34)]              0         
                                                                  
- dense_5 (Dense)             (None, 64)                2240      
+ dense_20 (Dense)            (None, 64)                2240      
                                                                  
- dropout_4 (Dropout)         (None, 64)                0         
+ dropout_16 (Dropout)        (None, 64)                0         
                                                                  
- dense_6 (Dense)             (None, 128)               8320      
+ dense_21 (Dense)            (None, 128)               8320      
                                                                  
- dropout_5 (Dropout)         (None, 128)               0         
+ dropout_17 (Dropout)        (None, 128)               0         
                                                                  
- dense_7 (Dense)             (None, 128)               16512     
+ dense_22 (Dense)            (None, 128)               16512     
                                                                  
- dropout_6 (Dropout)         (None, 128)               0         
+ dropout_18 (Dropout)        (None, 128)               0         
                                                                  
- dense_8 (Dense)             (None, 256)               33024     
+ dense_23 (Dense)            (None, 256)               33024     
                                                                  
- dropout_7 (Dropout)         (None, 256)               0         
+ dropout_19 (Dropout)        (None, 256)               0         
                                                                  
- dense_9 (Dense)             (None, 10)                2570      
+ dense_24 (Dense)            (None, 10)                2570      
                                                                  
 =================================================================
 Total params: 62666 (244.79 KB)

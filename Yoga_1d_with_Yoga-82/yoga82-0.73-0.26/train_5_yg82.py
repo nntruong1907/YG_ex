@@ -1,6 +1,6 @@
 """
 Default command line parameter:
-    python train.py --model fcnn1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model fnn1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
 
 Other:
     python train.py --model conv1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
@@ -23,8 +23,8 @@ if __name__ == "__main__":
         "--model",
         type=str,
         default="conv1d",
-        # default="fcnn1d",
-        help="model name: svm / fcnn1d / conv1d",
+        # default="fnn1d",
+        help="model name: svm / fnn1d / conv1d",
     )
     parser.add_argument(
         "--source",
@@ -113,7 +113,7 @@ if __name__ == "__main__":
             class_names,
         ) = load_data(args.source, args.test_size)
 
-        if args.model in ["fcnn1d"]:
+        if args.model in ["fnn1d"]:
             num_dense = 4
             for i in range(n):
                 print(f"Lần lặp thứ {i+1}")
